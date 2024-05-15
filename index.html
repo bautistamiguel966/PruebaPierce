@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link rel="stylesheet" href="./assets/styles/style-small.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
+    <link rel="stylesheet" href="./assets/styles/swiper-bundle.min.css" />
+    <title>Mi Tienda</title>
+</head>
+
+<body class="container-fluid" id="app">
+
+    <header class="row header-large">
+        <div class="row" id="fila-1">
+            <div class="col-lg-2 col-md-6 col-sm-6" id="logo">
+                <p>Mi Tienda</p>
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12" id="buscador">
+                <div class="search-bar">
+                    <input type="search" id="search" name="search" />
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6" id="cuenta-carrito">
+                <div id="mi-cuenta">
+                    <a href="">
+                        <img src="./assets/img/icons/usuario.svg" alt="Icono de búsqueda" class="search-icon" />
+                        Mi Cuenta
+                    </a>
+                </div>
+                <div id="carrito">
+                    <a href=""><img src="./assets/img/icons/carrito.svg" alt="Icono de búsqueda"
+                            class="search-icon" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="fila-2">
+            <div class="col-lg-12" id="opciones">
+                <ul>
+                    <li><a href="#">Muebles</a></li>
+                    <li><a href="#">Calzados</a></li>
+                    <li><a href="#">Colchones</a></li>
+                    <li><a href="#">Herramientas</a></li>
+                    <li id="li-ofertas">
+                        <a href="#" id="ofertas">Ofertas</a>
+                        <img src="./assets/img/icons/llama.svg" alt="Icono de ofertas" class="search-icon" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <header class="row header-small">
+        <div class="row" id="fila-1-small" v-if="!menuOpen">
+            <div class="col-3" id="menu">
+                <div @click="toggleMenu" class="menu-icon">
+                    <div id="menu-icono">☰</div>
+                </div>
+            </div>
+            <div class="col-6" id="logo">
+                <p>Mi Tienda</p>
+            </div>
+            <div class="col-3" id="cuenta-carrito">
+                <div id="mi-cuenta">
+                    <a href="">
+                        <img src="./assets/img/icons/usuario.svg" alt="Icono de usuario" class="search-icon" />
+                    </a>
+                </div>
+                <div id="carrito">
+                    <a href=""><img src="./assets/img/icons/carrito.svg" alt="Icono de carrito"
+                            class="search-icon" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="fila-2" v-else>
+            <div class="col-12" id="logo-x">
+                <div class="col-6" id="logo-menu">
+                    <p>Mi Tienda</p>
+                </div>
+                <div class="col-6" @click="toggleMenu" class="menu-icon">
+                    <div id="x-icono">✕</div>
+                </div>
+            </div>
+            <div class="col-lg-12" id="opciones">
+                <ul>
+                    <li class="linea"><a href="#">Muebles</a></li>
+                    <li class="linea"><a href="#">Calzados</a></li>
+                    <li class="linea"><a href="#">Colchones</a></li>
+                    <li class="linea"><a href="#">Herramientas</a></li>
+                    <li id="li-ofertas">
+                        <a href="#" id="ofertas">Ofertas</a>
+                        <img src="./assets/img/icons/llama.svg" alt="Icono de ofertas" class="search-icon" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="row">
+        <div id="banner">
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./assets/img/banner.jpg" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/img/banner.jpg" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/img/banner.jpg" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/img/banner.jpg" alt="..." />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="tendencias">
+            <p>TENDENCIAS</p>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="producto in productos">
+                        <div>
+                            <div class="card-producto">
+                                <div class="foto-producto">
+                                    <img :src="producto.image" alt="{{producto.title}}">
+                                </div>
+                                <div class="card-cuerpo">
+                                    <h5 class="producto-nombre">{{producto.title}}</h5>
+                                    <h5 class="producto-precio">${{producto.price}}</h5>
+                                    <a href="#" class="boton-comprar">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-next" v-if="mostrarFlechas"></div>
+                <div class="swiper-button-prev" v-if="mostrarFlechas"></div>
+
+            </div>
+            <!-- <div class="swiper-pagination" v-if="mostrarPaginacion"></div> -->
+        </div>
+
+        <div class="row populares-large" id="populares" v-if="mostrarLarge">
+            <div class="row populares-fila">
+                <div id="populares-titulo">
+                    <p>VISITÁ LAS CATEGORÍAS MÁS POPULARES</p>
+                </div>
+                <div id="categorias-populares">
+                    <div id="zapatillas">
+                        <p>ZAPATILLAS</p>
+                    </div>
+                    <div id="futbol-calzas">
+                        <div id="futbol">
+                            <p>FÚTBOL</p>
+                        </div>
+                        <div id="calzas">
+                            <p>CALZAS</p>
+                        </div>
+                    </div>
+                    <div id="pelotas">
+                        <p>PELOTAS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="populares-small" id="populares" v-else>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators custom-carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                </div>
+                <div id="populares-titulo">
+                    <p>VISITÁ LAS CATEGORÍAS MÁS POPULARES</p>
+                </div>
+                <div class="carousel-inner" id="contenedor-fotos">
+                    <div class="carousel-item active" id="foto-1">
+                        <p>ZAPATILLAS</p>
+                    </div>
+                    <div class="carousel-item" id="foto-2">
+                        <p>FÚTBOL</p>
+                    </div>
+                    <div class="carousel-item" id="foto-3">
+                        <p>CALZAS</p>
+                    </div>
+                    <div class="carousel-item" id="foto-4">
+                        <p>PELOTAS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="mas-vendidas" style="background-color: #ffffff;">
+            <p style="color: #000000;">LAS MAS VENDIDAS</p>
+            <div class="swiper mySwiperMasVendidas">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="producto in productos">
+                        <div>
+                            <div class="card-producto">
+                                <div class="foto-producto">
+                                    <img :src="producto.image" alt="{{producto.title}}">
+                                </div>
+                                <div class="card-cuerpo">
+                                    <h5 class="producto-nombre">{{producto.title}}</h5>
+                                    <h5 class="producto-precio">${{producto.price}}</h5>
+                                    <a href="#" class="boton-comprar">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next swiper-button-next-mas-vendidas" v-if="mostrarFlechas"></div>
+                <div class="swiper-button-prev swiper-button-prev-mas-vendidas" v-if="mostrarFlechas"></div>
+            </div>
+        </div>
+
+        <div class="row pre-footer-large" id="pre-footer" v-if="mostrarLarge">
+            <div class="col-lg-4 col-md-4 c-footer">
+                <div class="row iconos">
+                    <img src="./assets/img/icons/producto.svg" alt="Producto">
+                </div>
+                <div class="row parrafos">
+                    <p class="parrafo-titulo">ELEGÍ LOS PRODUCTOS QUE VAS A COMPRAR</p>
+                    <p class="parrafo-subtitulo">Si querés más de uno, sumalos a tu carrito.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 c-footer">
+                <div class="row iconos">
+                    <img src="./assets/img/icons/pago.svg" alt="Medios de Pago">
+                </div>
+                <div class="row parrafos">
+                    <p class="parrafo-titulo">PAGÁ CON EL MEDIO DE PAGO QUE QUIERAS</p>
+                    <p class="parrafo-subtitulo">Comprá con seguridad: usamos la tecnología de Mercado Pago.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 c-footer">
+                <div class="row iconos">
+                    <img src="./assets/img/icons/envio.svg" alt="Producto">
+                </div>
+                <div class="row parrafos">
+                    <p class="parrafo-titulo">RECIBÍ EL PRODUCTO QUE ESPERÁS</p>
+                    <p class="parrafo-subtitulo">Elegí la forma de entrega que prefieras ¡y listo! Aseguramos tu entrega
+                        con Mercado
+                        Envíos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pre-footer-small" id="pre-footer-small" v-else>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators custom-carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner" id="contenedor-pre-footer">
+                    <div class="carousel-item active" id="pre-footer-1">
+                        <div class="col-lg-12 c-footer-small">
+                            <div class="row iconos-small">
+                                <img src="./assets/img/icons/producto.svg" alt="Producto">
+                            </div>
+                            <div class="row parrafos-small">
+                                <p class="parrafo-titulo-small">ELEGÍ LOS PRODUCTOS QUE VAS A COMPRAR</p>
+                                <p class="parrafo-subtitulo-small">Si querés más de uno, sumalos a tu carrito.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" id="pre-footer-2">
+                        <div class="col-lg-12 c-footer-small">
+                            <div class="row iconos-small">
+                                <img src="./assets/img/icons/pago.svg" alt="Medios de Pago">
+                            </div>
+                            <div class="row parrafos-small">
+                                <p class="parrafo-titulo-small">PAGÁ CON EL MEDIO DE PAGO QUE QUIERAS</p>
+                                <p class="parrafo-subtitulo-small">Comprá con seguridad: usamos la tecnología de Mercado Pago.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" id="pre-footer-3">
+                        <div class="col-lg-12 c-footer-small">
+                            <div class="row iconos-small">
+                                <img src="./assets/img/icons/envio.svg" alt="Producto">
+                            </div>
+                            <div class="row parrafos-small">
+                                <p class="parrafo-titulo-small">RECIBÍ EL PRODUCTO QUE ESPERÁS</p>
+                                <p class="parrafo-subtitulo-small">Elegí la forma de entrega que prefieras ¡y listo! Aseguramos tu entrega
+                                    con Mercado
+                                    Envíos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="row footer-large" v-if="mostrarFooterLarge">
+        <div class="row" id="row-footer">
+            <div class="col-lg-3 col-md-3 col-sm-12" id="footer-col-1">
+                <div class="row textos">
+                    <a href="">CONDICIONES</a>
+                    <a href="">TRABAJÁ CON NOSOTROS</a>
+                    <a href="">MEDIOS DE PAGO</a>
+                    <a href="">PREGUNTAS FRECUENTES</a>
+                </div>
+                <div class="row" id="row-arrepentimiento">
+                    <a href="#" class="boton-arrepentimiento">BOTON DE ARREPENTIMIENTO</a>
+                </div>
+                <div class="row footer-logos">
+                    <div class="col-lg-6 col-md-6 col-sm-12" id="col-powered">
+                        <p id="powered">
+                            Powered by Pierce commerce
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/img/icons/pierce.svg" alt="Pierce Logo">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/img/icons/vtex.svg" alt="VTEX Logo">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12" id="footer-col-2">
+                <p id="parrrafo-footer-medio">
+                    Mi Tienda
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12" id="footer-col-3">
+                <div class="row" id="row-sucursales">
+                    <div class="col-lg-1 col-md-2">
+                        <img src="./assets/img/icons/sucursales.svg" alt="Sucursales" id="sucursales">
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                        <p>SUCURSALES</p>
+                    </div>
+                </div>
+                <div class="row" id="row-contacto">
+                    <p>Whatsapp 2215137270</p>
+                    <p>ecommerce@mateu.com.ar</p>
+                    <p>La Plata 1900, Buenos Aires, Argentina</p>
+                </div>
+                <div class="row" id="row-qr">
+                    <div class="col-6" id="qr-texto">
+                        <p>© 2023 MateuSports</p>
+                    </div>
+                    <div class="col-6" id="qr">
+                        <img src="./assets/img/icons/qr.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="row footer-small" v-else>
+        <div class="row" id="row-footer-small">
+            <div class="row" id="row-mi-tienda">
+                <p id="mi-tienda">
+                    Mi Tienda
+                </p>
+            </div>
+            <div class="row textos-small">
+                <a href="">CONDICIONES</a>
+                <a href="">TRABAJÁ CON NOSOTROS</a>
+                <a href="">MEDIOS DE PAGO</a>
+                <a href="">PREGUNTAS FRECUENTES</a>
+            </div>
+            <div class="row" id="row-arrepentimiento-small">
+                <a href="#" class="boton-arrepentimiento">BOTON DE ARREPENTIMIENTO</a>
+            </div>
+            <div class="row">
+                <div class="col-12" id="sucursales-icono">
+                    <img src="./assets/img/icons/sucursales.svg" alt="Sucursales" id="sucursales">SUCURSALES
+                </div>
+            </div>
+
+            <div class="row" id="row-contacto-small">
+                <p>Whatsapp 2215137270</p>
+                <p>ecommerce@mateu.com.ar</p>
+                <p>La Plata 1900, Buenos Aires, Argentina</p>
+            </div>
+            <div class="row" id="powered-pierce">
+                <div>
+                    Powered by Pierce commerce  <img src="./assets/img/icons/pierce.svg" alt="Pierce Logo" style="margin-left: 5px;">
+                </div>
+            </div>
+            <div class="row" id="qr-texto-small">
+                <p>© 2023 MateuSports</p>
+            </div>
+            <div class="row" id="qr-vtex">
+                <div class="col-12">
+                    <img src="./assets/img/icons/qr.svg" alt="QR">
+                    <img src="./assets/img/icons/vtex.svg" alt="VTEX Logo" style="margin-left: 15px;">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./assets/scripts/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./assets/scripts/index.js"></script>
+</body>
+
+
+</html>
